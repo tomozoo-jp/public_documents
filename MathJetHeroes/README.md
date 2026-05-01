@@ -1,9 +1,9 @@
- # SkyNumbers
+ # MathJetHeroes
   <img width="150" height="328" alt="IMG_1291" src="https://github.com/user-attachments/assets/a415f83a-c340-4502-84ae-2ecd5e1a6a3c" />
 
  ## Overview
 
-  SkyNumbers is an iOS arithmetic shooting game where you pilot a spaceship, solve math problems, and blast through waves of enemies. With retro pixel-art visuals and intuitive touch controls, even elementary school kids can sharpen their math skills while having a blast.  
+  MathJetHeroes is an iOS arithmetic shooting game where you pilot a spaceship, solve math problems, and blast through waves of enemies. With retro pixel-art visuals and intuitive touch controls, even elementary school kids can sharpen their math skills while having a blast.  
   <img width="151" height="305" alt="image" src="https://github.com/user-attachments/assets/cd2212e2-314d-480b-a6a0-1b76f7995ba8" />
 
 ## Key Features

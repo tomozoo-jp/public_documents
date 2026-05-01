@@ -1,0 +1,171 @@
+:root {
+  --fg: #1a1a1a;
+  --muted: #6b6b6b;
+  --bg: #ffffff;
+  --border: #e5e5e5;
+  --link: #1858c4;
+  --link-hover: #0f3d8e;
+  --code-bg: #f4f4f6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--fg);
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.site-title {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--fg);
+}
+
+.site-nav a {
+  margin-left: 16px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.site-nav a:hover {
+  color: var(--link-hover);
+}
+
+.content {
+  flex: 1;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+.content h1 {
+  font-size: 28px;
+  margin-top: 0;
+  line-height: 1.3;
+}
+
+.content h2 {
+  font-size: 22px;
+  margin-top: 2em;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
+}
+
+.content h3 {
+  font-size: 18px;
+  margin-top: 1.6em;
+}
+
+.content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.content code {
+  background: var(--code-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.content pre {
+  background: var(--code-bg);
+  padding: 12px 16px;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.content pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.content blockquote {
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  border-left: 3px solid var(--border);
+  color: var(--muted);
+}
+
+.content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2em 0;
+}
+
+.app-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.app-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 24px;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.app-card:hover {
+  border-color: var(--link);
+}
+
+.app-card h2 {
+  margin: 0 0 4px;
+  font-size: 20px;
+  border: none;
+  padding: 0;
+}
+
+.app-card p {
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+
+.app-card .app-links a {
+  margin-right: 16px;
+  font-size: 14px;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 16px 24px;
+  text-align: center;
+  color: var(--muted);
+}
