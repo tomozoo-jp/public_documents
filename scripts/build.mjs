@@ -7,53 +7,41 @@ import { marked } from "marked";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
 
-const layoutPath = path.join(root, "templates", "layout.html");
+const layoutPath = path.join(root, "templates", "index.html");
 const appsJsonPath = path.join(root, "apps.json");
+const stylesheetPath = path.join(root, "assets", "style.css");
+const rootIndexPath = path.join(root, "index.html");
 
-const NAV_LABELS = {
+const PAGE_LABELS = {
   "index.html": "Overview",
   "privacy_policy.html": "Privacy Policy",
   "inquiry.html": "Support",
 };
+const PAGE_ORDER = ["index.html", "privacy_policy.html", "inquiry.html"];
 
 function htmlFileNameFor(mdFileName) {
   if (mdFileName === "README.md") return "index.html";
   return mdFileName.toLowerCase().replace(/\.md$/, ".html");
 }
 
-function relPath(from, to) {
-  let rel = path.relative(from, to);
+function relPath(fromDir, toFile) {
+  let rel = path.relative(fromDir, toFile);
   if (!rel.startsWith(".")) rel = "./" + rel;
   return rel.split(path.sep).join("/");
 }
 
-function renderLayout(layout, { title, content, nav, pageDir }) {
-  const stylesheet = relPath(pageDir, path.join(root, "assets", "style.css"));
-  const home = relPath(pageDir, path.join(root, "index.html"));
-  return layout
-    .replaceAll("{{title}}", title)
-    .replaceAll("{{stylesheet}}", stylesheet)
-    .replaceAll("{{home}}", home)
-    .replaceAll("{{nav}}", nav)
-    .replaceAll("{{content}}", content);
+function escapeHtml(s) {
+  return String(s ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
 
-function buildAppNav(appDir, mdFiles, currentHtml) {
-  const links = mdFiles
-    .map((md) => htmlFileNameFor(md))
-    .filter((html) => NAV_LABELS[html])
-    .sort((a, b) => {
-      const order = ["index.html", "privacy_policy.html", "inquiry.html"];
-      return order.indexOf(a) - order.indexOf(b);
-    });
-  const items = links.map((html) => {
-    const label = NAV_LABELS[html];
-    if (html === currentHtml) {
-      return `<span aria-current="page">${label}</span>`;
-    }
-    return `<a href="./${html}">${label}</a>`;
-  });
-  return `<nav class="site-nav">${items.join("")}</nav>`;
+function renderLayout(layout, vars) {
+  return layout.replace(/\{\{(\w+)\}\}/g, (_, key) =>
+    key in vars ? vars[key] : ""
+  );
 }
 
 function extractTitle(html, fallback) {
@@ -74,7 +62,51 @@ async function listMarkdownFiles(dir) {
   return out;
 }
 
-async function buildApp(layout, app) {
+function buildAppAside(app, mdFiles, currentHtml, pageDir) {
+  const pages = mdFiles
+    .map((md) => htmlFileNameFor(md))
+    .filter((html) => PAGE_LABELS[html])
+    .sort((a, b) => PAGE_ORDER.indexOf(a) - PAGE_ORDER.indexOf(b));
+  const items = pages
+    .map((html) => {
+      const label = PAGE_LABELS[html];
+      if (html === currentHtml) {
+        return `<li><strong>${label}</strong></li>`;
+      }
+      return `<li><a href="./${html}">${label}</a></li>`;
+    })
+    .join("\n");
+  const home = relPath(pageDir, rootIndexPath);
+  return `<div class="left-title">${escapeHtml(app.name)}</div>
+<div class="link">
+<ul>
+${items}
+</ul>
+</div>
+<div class="left-title">Other</div>
+<div class="link">
+<ul>
+<li><a href="${home}">Back to top</a></li>
+</ul>
+</div>`;
+}
+
+function buildIndexAside(apps) {
+  const items = apps
+    .map(
+      (a) =>
+        `<li><a href="./${a.id}/">${escapeHtml(a.name)}</a></li>`
+    )
+    .join("\n");
+  return `<div class="left-title">Apps</div>
+<div class="link">
+<ul>
+${items}
+</ul>
+</div>`;
+}
+
+async function buildApp(layout, site, app) {
   const appDir = path.join(root, app.id);
   if (!existsSync(appDir)) {
     throw new Error(`App folder not found: ${appDir}`);
@@ -90,16 +122,22 @@ async function buildApp(layout, app) {
     const outPath = path.join(appDir, htmlName);
     const src = await readFile(srcPath, "utf8");
     const body = marked.parse(src);
+    const pageHeading = extractTitle(body, app.name);
     const title =
       htmlName === "index.html"
-        ? `${app.name} — ${extractTitle(body, app.name)}`
-        : `${extractTitle(body, htmlName)} — ${app.name}`;
-    const nav = buildAppNav(appDir, mdFiles, htmlName);
+        ? `${app.name} — ${site.title}`
+        : `${pageHeading} — ${app.name}`;
+    const aside = buildAppAside(app, mdFiles, htmlName, appDir);
     const html = renderLayout(layout, {
-      title,
+      title: escapeHtml(title),
+      description: escapeHtml(app.tagline ?? site.tagline ?? ""),
+      keywords: escapeHtml([app.name, site.title].filter(Boolean).join(", ")),
+      stylesheet: relPath(appDir, stylesheetPath),
+      home: relPath(appDir, rootIndexPath),
+      site_title: escapeHtml(site.title),
+      site_tagline: escapeHtml(site.tagline ?? ""),
       content: body,
-      nav,
-      pageDir: appDir,
+      aside,
     });
     await writeFile(outPath, html, "utf8");
     console.log(`  ${path.relative(root, outPath)}`);
@@ -110,31 +148,28 @@ async function buildIndex(layout, site, apps) {
   const cards = apps
     .map((app) => {
       const href = `./${app.id}/`;
-      return `      <li class="app-card">
-        <h2><a href="${href}">${app.name}</a></h2>
-        <p>${app.tagline ?? ""}</p>
-        <div class="app-links">
-          <a href="./${app.id}/">Overview</a>
-          <a href="./${app.id}/privacy_policy.html">Privacy Policy</a>
-          <a href="./${app.id}/inquiry.html">Support</a>
-        </div>
-      </li>`;
+      return `<h2><a href="${href}">${escapeHtml(app.name)}</a></h2>
+<p>${escapeHtml(app.tagline ?? "")}</p>
+<p><a href="${href}">Overview</a> &middot; <a href="./${app.id}/privacy_policy.html">Privacy Policy</a> &middot; <a href="./${app.id}/inquiry.html">Support</a></p>`;
     })
     .join("\n");
-  const content = `<h1>${site.title}</h1>
-<p>${site.tagline ?? ""}</p>
-<ul class="app-list">
-${cards}
-</ul>`;
+  const content = cards;
+  const aside = buildIndexAside(apps);
   const html = renderLayout(layout, {
-    title: site.title,
+    title: escapeHtml(site.title),
+    description: escapeHtml(site.tagline ?? ""),
+    keywords: escapeHtml(
+      [site.title, ...apps.map((a) => a.name)].filter(Boolean).join(", ")
+    ),
+    stylesheet: relPath(root, stylesheetPath),
+    home: relPath(root, rootIndexPath),
+    site_title: escapeHtml(site.title),
+    site_tagline: escapeHtml(site.tagline ?? ""),
     content,
-    nav: "",
-    pageDir: root,
+    aside,
   });
-  const outPath = path.join(root, "index.html");
-  await writeFile(outPath, html, "utf8");
-  console.log(`  ${path.relative(root, outPath)}`);
+  await writeFile(rootIndexPath, html, "utf8");
+  console.log(`  ${path.relative(root, rootIndexPath)}`);
 }
 
 async function main() {
@@ -143,7 +178,7 @@ async function main() {
 
   console.log("Building apps:");
   for (const app of config.apps) {
-    await buildApp(layout, app);
+    await buildApp(layout, config.site, app);
   }
 
   console.log("Building index:");

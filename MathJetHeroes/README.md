@@ -1,65 +1,92 @@
- # MathJetHeroes
-  <img width="150" height="328" alt="IMG_1291" src="https://github.com/user-attachments/assets/a415f83a-c340-4502-84ae-2ecd5e1a6a3c" />
+# MathJetHeroes
 
- ## Overview
+<p align="center">
+  <img src="../images/english10.PNG" alt="Math Jet Heroes title screen" width="280">
+</p>
 
-  MathJetHeroes is an iOS arithmetic shooting game where you pilot a spaceship, solve math problems, and blast through waves of enemies. With retro pixel-art visuals and intuitive touch controls, even elementary school kids can sharpen their math skills while having a blast.  
-  <img width="151" height="305" alt="image" src="https://github.com/user-attachments/assets/cd2212e2-314d-480b-a6a0-1b76f7995ba8" />
+## Overview
+
+MathJetHeroes is an iOS arithmetic shooting game where you pilot a spaceship, solve math problems, and blast through waves of enemies. With retro pixel-art visuals and intuitive touch controls, even elementary school kids can sharpen their math skills while having a blast.
+
+<p align="center">
+  <img src="../images/english01.png" alt="Gameplay in the Jungle River stage" width="280">
+</p>
 
 ## Key Features
 
-- 🎮 Math Meets Shooting To destroy enemies, you must enter the correct answer on the number pad. Right answer = bullets fly. Wrong answer = nothing happens.  
-- 🚀 5 Unique Stages Journey through a jungle, ocean, snowy mountains, desert, and a glittering city skyline. A powerful boss awaits at the end of each stage.  
-- ✏️  Column Arithmetic Display Problems appear in a chalkboard-style column format — familiar and intuitive for kids used to pencil-and-paper math.  
-- ⚙️  Fully Customizable Switch between addition and subtraction, choose difficulty levels 1–5, set starting lives (3–9), and more — tailored to each child's skill level.  
-- 🌍 16 Languages Supported Available in Japanese, English, Spanish, Arabic, Chinese, and 12 more languages.  
+- 🎮 **Math Meets Shooting** — To destroy enemies, you must enter the correct answer on the number pad. Right answer = bullets fly. Wrong answer = nothing happens.
+- 🚀 **5 Unique Stages** — Journey through a jungle, ocean, snowy mountains, desert, and a glittering city skyline. A powerful boss awaits at the end of each stage.
+- ✏️ **Column Arithmetic Display** — Problems appear in a chalkboard-style column format — familiar and intuitive for kids used to pencil-and-paper math.
+- ⚙️ **Fully Customizable** — Switch between addition and subtraction, choose difficulty levels 1–5, set starting lives (3–9), and more — tailored to each child's skill level.
+- 🌍 **16 Languages Supported** — Available in Japanese, English, Spanish, Arabic, Chinese, and 12 more languages.
 
- ## How to Play
-<img width="150" height="328" alt="IMG_1283" src="https://github.com/user-attachments/assets/30c628be-1c8b-4faa-b962-dd0fb42f8928" />  
+## How to Play
 
-1. Move your ship Use the D-pad in the bottom-left corner to fly in any direction.  
-2. Solve the math problem When enemies appear, type the answer using the number pad at the bottom of the screen.  
-3. Correct = Fire! A correct answer automatically launches bullets. Tap the A button for additional shots.  
-4. Defeat the Boss to Clear the Stage Collect power-ups, take down regular enemies, and destroy the final boss to complete each stage!  
+<p align="center">
+  <img src="../images/english06.png" alt="Tutorial - Step 1 of 7" width="280">
+</p>
 
-<img width="150" height="328" alt="IMG_1287" src="https://github.com/user-attachments/assets/deb4ebf6-9a61-4fd2-a981-5da3db42f232" />  
+1. **Move your ship** — Use the D-pad in the bottom-left corner to fly in any direction.
+2. **Solve the math problem** — When enemies appear, type the answer using the number pad at the bottom of the screen.
+3. **Correct = Fire!** — A correct answer automatically launches bullets. Tap the A button for additional shots.
+4. **Defeat the Boss to Clear the Stage** — Collect power-ups, take down regular enemies, and destroy the final boss to complete each stage!
 
 ## Stages
-- Stage 1 — Amazon Jungle Face quirky enemies shaped like pencils, erasers, and rulers. The stage boss is a giant robotic spider: SPIDER CORE.  
-- Stage 2 — Island Seas Battle fiery orange-themed enemies over a shimmering ocean. The fearsome shark-shaped SHARK CORE awaits as the boss.  
-- Stage 3 — Snowy Mountains Magical purple-themed enemies haunt an icy snowfield. The tentacled OCTO CORE is the stage boss.  
-- Stage 4 — Desert & Oasis Scorpion-themed enemies modeled after claws, bodies, and tails. The full scorpion boss Scorpion CORE is the final challenge.  
-- Stage 5 — City Nightscape Encounter robot-part enemies: eyes, mouths, and energy cores. The ultimate machine tyrant THE REGIME CORE Mk-V is the final boss.
 
-<img width="176" height="383" alt="Gemini_Generated_Image_dgatmodgatmodgat" src="https://github.com/user-attachments/assets/6ce7bcc6-d69c-46c5-9188-50b53f3bba87" />
+<p align="center">
+  <img src="../images/english07.png" alt="All five stages of Math Jet Heroes" width="320">
+</p>
 
+- **Stage 1 — Jungle River** — Face quirky enemies shaped like pencils, erasers, and rulers. The stage boss is a giant robotic spider: SPIDER CORE.
+- **Stage 2 — Sea Archipelago** — Battle fiery orange-themed enemies over a shimmering ocean. The fearsome shark-shaped SHARK CORE awaits as the boss.
+- **Stage 3 — Snowy Cloud Realm** — Magical purple-themed enemies haunt an icy snowfield. The tentacled OCTO CORE is the stage boss.
+- **Stage 4 — Desert Floating Oasis** — Scorpion-themed enemies modeled after claws, bodies, and tails. The full scorpion boss Scorpion CORE is the final challenge.
+- **Stage 5 — Celestial City Ruins** — Encounter robot-part enemies: eyes, mouths, and energy cores. The ultimate machine tyrant THE REGIME CORE Mk-V is the final boss.
+
+<p align="center">
+  <img src="../images/english04.png" alt="Sea Archipelago boss - SHARK CORE" width="280">
+  <img src="../images/english05.png" alt="Snowy Cloud Realm boss - OCTO CORE" width="280">
+</p>
 
 ## Weapons & Items
 
-<img width="150" height="328" alt="IMG_1288" src="https://github.com/user-attachments/assets/0dc98702-c4e7-4c02-80f8-cd0b95595026" />  
+<p align="center">
+  <img src="../images/english02.png" alt="Laser power-up in action" width="280">
+  <img src="../images/english03.png" alt="Area attack effect" width="280">
+</p>
 
-Enemies drop items when defeated. Use power-ups to upgrade your firepower or survive tough situations.  
-- 🔫 Double Shot　Fire two bullets at once.  
-- 🌐 Three Way　Shoot forward and diagonally at the same time.  
-- ⚡ Laser　Shoot a powerful beam.  
-- 🚀 Missile　Launch homing missiles that track enemies.  
-- 🛡️  Barrier　A shield that blocks one hit of contact damage.  
-- ❤️  Heal　Restore 1 HP.  
-- ✨ Invincible　Become invulnerable for a short time.  
-- 👥 Clone　A clone appears and fights alongside you. (Very Rare)  
-- 1UP　Gain an extra life. (Very Rare)  
+Enemies drop items when defeated. Use power-ups to upgrade your firepower or survive tough situations.
 
-# Ad Enemy System
-<img width="150" height="328" alt="IMG_1289" src="https://github.com/user-attachments/assets/4a78c984-a8dd-446f-bab0-c5fce2336915" />  
+- 🔫 **Double Shot** — Fire two bullets at once.
+- 🌐 **Three Way** — Shoot forward and diagonally at the same time.
+- ⚡ **Laser** — Shoot a powerful beam.
+- 🚀 **Missile** — Launch homing missiles that track enemies.
+- 🛡️ **Barrier** — A shield that blocks one hit of contact damage.
+- ❤️ **Heal** — Restore 1 HP.
+- ✨ **Invincible** — Become invulnerable for a short time.
+- 👥 **Clone** — A clone appears and fights alongside you. (Very Rare)
+- **1UP** — Gain an extra life. (Very Rare)
 
-- During gameplay, special glittering Ad Enemies may appear. Defeating them triggers a short ad, but it rewards you with a debuff effect that weakens the upcoming stage boss!  
-- An ad-free experience is also available as a paid option.  
+## Ad Enemy System
 
-  ---
-# Settings
-<img width="150" height="328" alt="IMG_1290" src="https://github.com/user-attachments/assets/5df9c745-804e-4273-a74f-c07e128ebbec" />  
+- During gameplay, special glittering Ad Enemies may appear. Defeating them triggers a short ad, but it rewards you with a debuff effect that weakens the upcoming stage boss!
+- An ad-free experience is also available as a paid option.
 
-- Operation Type　Choose addition or subtraction.  
-- Difficulty　5 levels. Choose escalating difficulty across stages or a fixed level throughout.  
-- Starting Lives　Select from 3, 5, 7, or 9 lives.  
-- Language　Japanese, English, Spanish, Arabic, Simplified Chinese, Korean, and 10 more.  
+## Settings
+
+<p align="center">
+  <img src="../images/english08.PNG" alt="Settings screen" width="280">
+</p>
+
+- **Operation Type** — Choose addition or subtraction.
+- **Difficulty** — 5 levels. Choose escalating difficulty across stages or a fixed level throughout.
+- **Starting Lives** — Select from 3, 5, 7, or 9 lives.
+- **Language** — Japanese, English, Spanish, Arabic, Simplified Chinese, Korean, and 10 more.
+
+## High Scores
+
+<p align="center">
+  <img src="../images/english09.PNG" alt="High score ranking screen" width="280">
+</p>
+
+Track your top runs by date, score, or stage progress, and aim to clear every stage at 100%.
